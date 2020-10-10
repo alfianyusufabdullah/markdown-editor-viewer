@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PreviewFragment"
-    android:background="#fff">
+    android:background="#fff"
+    tools:context=".MarkdownPreviewFragment">
 
-    <ScrollView
+    <TextView
+        android:id="@+id/markdownPreview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
-            android:id="@+id/markdownPreview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp"
-            tools:text="Hore" />
-    </ScrollView>
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textSize="16"
+        tools:text="Hello World" />
 
-</FrameLayout>
+</ScrollView>

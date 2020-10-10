@@ -6,36 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".MarkdownActivity">
 
-    <Button
-        android:id="@+id/btnH3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:text="h3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnH5"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnH5"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="h5"
-        app:layout_constraintEnd_toStartOf="@+id/btnBold"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnH3"
-        app:layout_constraintTop_toTopOf="@id/btnH3" />
 
     <Button
         android:id="@+id/btnBold"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="b"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnItalic"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnH5"
-        app:layout_constraintTop_toTopOf="@id/btnH3" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnItalic"
@@ -45,7 +25,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btnCode"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnBold"
-        app:layout_constraintTop_toTopOf="@id/btnH3" />
+        app:layout_constraintTop_toTopOf="@id/btnBold" />
 
     <Button
         android:id="@+id/btnCode"
@@ -56,13 +36,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnItalic"
-        app:layout_constraintTop_toTopOf="@id/btnH3" />
+        app:layout_constraintTop_toTopOf="@id/btnItalic" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintBottom_toTopOf="@id/btnH3"
+        app:layout_constraintBottom_toTopOf="@id/btnBold"
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
@@ -70,15 +50,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:autofillHints="Hello World's"
             android:background="@android:color/transparent"
             android:gravity="start"
             android:hint="Write your mark down here"
             android:imeOptions="actionDone"
-            android:textStyle="normal"
             android:inputType="text|textNoSuggestions|textMultiLine"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:textSize="16sp"
+            android:textStyle="normal" />
 
     </ScrollView>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

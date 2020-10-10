@@ -1,3 +1,5 @@
+package alfianyusufabdullah.exp.markdown
+
 import java.util.regex.Pattern
 
 object MarkdownHelper {

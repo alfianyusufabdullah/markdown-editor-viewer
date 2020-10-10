@@ -50,7 +50,7 @@ class MarkdownActivity : AppCompatActivity(), View.OnClickListener {
         val start = markdownEditor.selectionStart
         val end = markdownEditor.selectionEnd - 1
 
-        if (end == 0) return
+        if (start - end == 1 || (end == 0)) return
 
         val text = markdownEditor.text.substring(start..end)
         val mark = when (p0?.id) {

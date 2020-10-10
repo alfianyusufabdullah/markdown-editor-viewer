@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MarkdownActivity">
 
     <Button
         android:id="@+id/btnH3"
@@ -74,9 +74,9 @@
             android:gravity="start"
             android:hint="Write your mark down here"
             android:imeOptions="actionDone"
-
+            android:textStyle="normal"
             android:inputType="text|textNoSuggestions|textMultiLine"
-            android:padding="30dp" />
+            android:padding="16dp" />
 
     </ScrollView>
 

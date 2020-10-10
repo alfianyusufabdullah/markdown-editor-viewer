@@ -19,7 +19,9 @@ import kotlin.time.ExperimentalTime
 @ExperimentalTime
 @FlowPreview
 @PrismBundle(include = ["java", "kotlin"], grammarLocatorClassName = ".GrammarLocatorSourceCode")
-class MarkdownPreviewFragment : Fragment() {
+class MarkdownPreviewFragment private constructor() : Fragment() {
+
+    private val type: String by lazy { arguments?.getString(KEY_TYPE) ?: "html" }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,10 +40,24 @@ class MarkdownPreviewFragment : Fragment() {
             .usePlugin(SyntaxHighlightPlugin.create(prism4j, prism4jThemeDefault))
             .build()
 
-
         val mainViewModel = ViewModelProvider(requireActivity())[MarkdownViewModel::class.java]
         mainViewModel.text.observe(viewLifecycleOwner) {
             mark.setMarkdown(markdownPreview, it)
         }
+    }
+
+    companion object {
+        const val TYPE_MARKDOWN = "markdown"
+        const val TYPE_HTML = "html"
+
+        const val KEY_TYPE = "type"
+
+        @JvmStatic
+        fun newInstance(type: String) =
+            MarkdownFragment().apply {
+                arguments = Bundle().apply {
+                    putString(KEY_TYPE, type)
+                }
+            }
     }
 }

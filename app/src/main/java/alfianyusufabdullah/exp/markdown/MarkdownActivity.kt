@@ -3,6 +3,7 @@ package alfianyusufabdullah.exp.markdown
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.ViewModelProvider
@@ -16,7 +17,7 @@ import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
 @FlowPreview
-class MarkdownActivity : AppCompatActivity() {
+class MarkdownActivity : AppCompatActivity(), View.OnClickListener {
 
     private var isPreviewShow = false
 
@@ -40,59 +41,29 @@ class MarkdownActivity : AppCompatActivity() {
             )
         )
 
-        /*btnH3.setOnClickListener {
-            val start = markdownEditor.selectionStart
-            val end = markdownEditor.selectionEnd - 1
+        btnBold.setOnClickListener(this)
+        btnItalic.setOnClickListener(this)
+        btnCode.setOnClickListener(this)
+    }
 
-            val text = markdownEditor.text.substring(start..end)
-            val mark = "### $text"
+    override fun onClick(p0: View?) {
+        val start = markdownEditor.selectionStart
+        val end = markdownEditor.selectionEnd - 1
 
-            val replace = markdownEditor.text.toString().replace(text, mark)
+        if (end == 0) return
 
-            markdownEditor.setText(replace)
-            markdownEditor.requestFocus()
+        val text = markdownEditor.text.substring(start..end)
+        val mark = when (p0?.id) {
+            R.id.btnBold -> "**$text**"
+            R.id.btnItalic -> "_${text}_"
+            R.id.btnCode -> "```\n$text\n```"
+            else -> throw IllegalArgumentException("Unknown view")
         }
 
-        btnH5.setOnClickListener {
-            val start = markdownEditor.selectionStart
-            val end = markdownEditor.selectionEnd - 1
+        val replace = markdownEditor.text.toString().replace(text, mark)
 
-            val text = markdownEditor.text.substring(start..end)
-            val mark = "##### $text"
-
-            val replace = markdownEditor.text.toString().replace(text, mark)
-
-            markdownEditor.setText(replace)
-            markdownEditor.requestFocus()
-        }
-
-        btnBold.setOnClickListener {
-            val start = markdownEditor.selectionStart
-            val end = markdownEditor.selectionEnd - 1
-
-            val text = markdownEditor.text.substring(start..end)
-            val mark = "**$text**"
-
-            val replace = markdownEditor.text.toString().replace(text, mark)
-
-            markdownEditor.setText(replace)
-            markdownEditor.requestFocus()
-        }
-
-        btnCode.setOnClickListener {
-            val start = markdownEditor.selectionStart
-            val end = markdownEditor.selectionEnd - 1
-
-            val text = markdownEditor.text.substring(start..end)
-            val mark = """```
-                        |$text
-                        |```""".trimMargin()
-
-            val replace = markdownEditor.text.toString().replace(text, mark)
-
-            markdownEditor.setText(replace)
-            markdownEditor.requestFocus()
-        }*/
+        markdownEditor.setText(replace)
+        markdownEditor.requestFocus()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

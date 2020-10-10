@@ -41,8 +41,19 @@ class MarkdownPreviewFragment private constructor() : Fragment() {
             .build()
 
         val mainViewModel = ViewModelProvider(requireActivity())[MarkdownViewModel::class.java]
-        mainViewModel.text.observe(viewLifecycleOwner) {
-            mark.setMarkdown(markdownPreview, it)
+        mainViewModel.apply {
+            when (type) {
+                TYPE_MARKDOWN -> markdown.observe(viewLifecycleOwner) {
+                    mark.setMarkdown(
+                        markdownPreview,
+                        it
+                    )
+                }
+                TYPE_HTML -> html.observe(viewLifecycleOwner) {
+                    println(it)
+                   markdownPreview.text = it
+                }
+            }
         }
     }
 
@@ -54,7 +65,7 @@ class MarkdownPreviewFragment private constructor() : Fragment() {
 
         @JvmStatic
         fun newInstance(type: String) =
-            MarkdownFragment().apply {
+            MarkdownPreviewFragment().apply {
                 arguments = Bundle().apply {
                     putString(KEY_TYPE, type)
                 }

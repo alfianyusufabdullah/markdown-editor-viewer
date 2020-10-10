@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MarkdownActivity">
 
-
     <Button
         android:id="@+id/btnBold"
         android:layout_width="0dp"

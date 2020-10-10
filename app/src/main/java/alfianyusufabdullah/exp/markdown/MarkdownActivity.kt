@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import io.noties.markwon.Markwon
 import io.noties.markwon.editor.MarkwonEditor
 import io.noties.markwon.editor.MarkwonEditorTextWatcher
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_markdown.*
 import kotlinx.coroutines.FlowPreview
 import java.util.concurrent.Executors
 import kotlin.time.ExperimentalTime
@@ -22,7 +22,7 @@ class MarkdownActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_markdown)
 
         val mainViewModel = ViewModelProvider(this)[MarkdownViewModel::class.java]
         markdownEditor.doAfterTextChanged {
@@ -110,7 +110,7 @@ class MarkdownActivity : AppCompatActivity() {
                 supportFragmentManager
                     .beginTransaction()
                     .addToBackStack(null)
-                    .add(android.R.id.content, MarkdownPreviewFragment())
+                    .add(android.R.id.content, MarkdownFragment())
                     .commit()
             }
 
